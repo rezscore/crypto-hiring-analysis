@@ -23,7 +23,7 @@ our standard, we dropped it. We say so explicitly below.
  developers fell ~20% from their late-2022 peak.
 - **Crypto's price chart says capitulation; its money flow says records.**
  Stablecoin market cap hit an all-time high ($317B, Mar 2026) and institutions
- are tokenizing real assets - even as BTC sits ~47% below its high and the
+ are tokenizing real assets - even as BTC sits ~50% below its high and the
  Fear & Greed Index reads "Extreme Fear."
 - **VC funding is off its peak but still billions.** ~$30B/yr at the 2021-22 peak
  → ~$16B annualized pace in 2026.
@@ -48,9 +48,9 @@ our standard, we dropped it. We say so explicitly below.
 ### Crypto prices & sentiment
 | Claim | Figure | Source | As of |
 |-------|--------|--------|-------|
-| Bitcoin price vs ATH | ~$65,853, ~47% below ~$126,000 ATH (Oct 2025) | news.bitcoin.com, CoinDesk, Fortune | Jun 3, 2026 |
-| Ethereum price vs ATH | ~$1,922, ~61% below $4,953.73 ATH (Aug 2025) | Yahoo Finance, TradingView, CoinCodex | Jun 2, 2026 |
-| Crypto Fear & Greed Index | 11 ("Extreme Fear"), down from 40 a month earlier | [alternative.me](https://alternative.me/crypto/fear-and-greed-index/) | Jun 3, 2026 |
+| Bitcoin price vs ATH | ~$63,553, ~50% below ~$126,198 ATH (Oct 2025) | [Yahoo Finance](https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-friday-june-12-2026-prices-rebound-this-morning-after-trump-claims-war-has-ended-115949042.html) | Jun 12, 2026 |
+| Ethereum price vs ATH | ~$1,672, ~66% below $4,953.73 ATH (Aug 2025) | [Yahoo Finance](https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-friday-june-12-2026-prices-rebound-this-morning-after-trump-claims-war-has-ended-115949042.html) | Jun 12, 2026 |
+| Crypto Fear & Greed Index | 12 ("Extreme Fear"), lowest reading of 2026 | [alternative.me](https://alternative.me/crypto/fear-and-greed-index/) | Jun 13, 2026 |
 | Median crypto token | -79% from late-2024 peak | [Pantera Capital Blockchain Letter](https://panteracapital.com/blockchain-letter/navigating-crypto-in-2026/) | Jan 2026 |
 | Altcoin mkt cap (ex BTC/ETH/stables) | -44% from late-2024 peak | Pantera Capital Blockchain Letter | Jan 2026 |
 

@@ -99,21 +99,21 @@ def chart_1_labor_bear_market():
 
 
 def chart_2_crypto_drawdown():
-    """How far crypto prices are off their highs (June 2-3, 2026).
+    """How far crypto prices are off their highs (June 12, 2026).
 
     Sources:
-    - BTC ~$65,853 on Jun 3 2026, ~47% below ATH ~$126,000 (Oct 6 2025).
-      news.bitcoin.com / CoinDesk / Fortune.
-    - ETH ~$1,922 on Jun 2 2026, ~61% below ATH $4,953.73 (Aug 24 2025).
-      Yahoo Finance / TradingView / CoinCodex.
+    - BTC ~$63,553 on Jun 12 2026, ~50% below ATH $126,198 (Oct 6 2025).
+      Yahoo Finance.
+    - ETH ~$1,672 on Jun 12 2026, ~66% below ATH $4,953.73 (Aug 24 2025).
+      Yahoo Finance.
     - Median altcoin -79% from late-2024 peak; altcoin mkt cap (ex BTC/ETH/stables)
       -44% from that peak. Pantera Capital Blockchain Letter (Jan 2026).
-    - Crypto Fear & Greed Index = 11 ("Extreme Fear") on Jun 3 2026. alternative.me.
+    - Crypto Fear & Greed Index = 12 ("Extreme Fear"), lowest of 2026, Jun 13 2026. alternative.me.
     """
     fig, ax = plt.subplots(figsize=(11, 6.5))
 
     labels = ['Bitcoin', 'Ethereum', 'Altcoin market cap\n(ex BTC/ETH/stables)', 'Median\ncrypto token']
-    drawdowns = [-47, -61, -44, -79]  # % below respective peaks
+    drawdowns = [-50, -66, -44, -79]  # % below respective peaks
     colors = [REZSCORE_ORANGE, REZSCORE_BLUE, GRAY, DANGER_RED]
 
     bars = ax.bar(labels, drawdowns, color=colors, width=0.6)
@@ -129,9 +129,9 @@ def chart_2_crypto_drawdown():
 
     # Fear & Greed callout
     ax.text(0.5, -0.155,
-            'BTC/ETH: prices vs all-time highs, June 2-3, 2026 (CoinDesk, Yahoo Finance). '
+            'BTC/ETH: prices vs all-time highs, June 12, 2026 (Yahoo Finance). '
             'Altcoin figures: Pantera Capital (Jan 2026), peak-to-trough from late-2024 peak.\n'
-            'Crypto Fear & Greed Index sat at 11 ("Extreme Fear") on June 3, 2026 — down from 40 a month earlier (alternative.me).',
+            'Crypto Fear & Greed Index hit 12 ("Extreme Fear"), its lowest of 2026, on June 13, 2026 (alternative.me).',
             ha='center', fontsize=9, color=GRAY, style='italic', transform=ax.transAxes)
 
     ax.spines['top'].set_visible(False)
