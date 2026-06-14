@@ -40,10 +40,10 @@ our standard, we dropped it. We say so explicitly below.
 |-------|--------|--------|-------|
 | Tech layoffs, 2024 | 152,922 across 551 companies | [layoffs.fyi](https://layoffs.fyi/) (crowd-aggregated tracker) | early Jun 2026 |
 | Tech layoffs, 2026 (partial) | 165,269 across 1,064 companies | [layoffs.fyi](https://layoffs.fyi/) | early Jun 2026 |
-| Young (22–25) AI-exposed workers | ~16% relative employment decline | [Stanford Digital Economy Lab, "Canaries in the Coal Mine?"](https://digitaleconomy.stanford.edu/) | Nov 2025 |
-| Young software developers | ~20% below late-2022 peak (descriptive) | Stanford, "Canaries in the Coal Mine?" | Nov 2025 |
-| Undergrad computing enrollment | −3.1% (2025 cycle), reversing a decade of growth | [CRA Taulbee Survey 2025 (sneak peek)](https://cra.org/) | May 2026 |
-| New CS majors (prior cycle) | +12.7%, fourth straight year of growth | [CRA Taulbee Survey 2024](https://cra.org/) | Jun 2025 |
+| Young (22–25) AI-exposed workers | ~16% relative employment decline | [Stanford Digital Economy Lab, "Canaries in the Coal Mine?"](https://digitaleconomy.stanford.edu/app/uploads/2025/11/CanariesintheCoalMine_Nov25.pdf) | Nov 2025 |
+| Young software developers | ~20% below late-2022 peak (descriptive) | [Stanford, "Canaries in the Coal Mine?"](https://digitaleconomy.stanford.edu/app/uploads/2025/11/CanariesintheCoalMine_Nov25.pdf) | Nov 2025 |
+| Undergrad computing enrollment | −3.1% (2025 cycle), reversing a decade of growth | [CRA Taulbee Survey 2025 (sneak peek)](https://cra.org/crn/2026/05/cra-update-a-sneak-peek-at-computing-degree-enrollment-trends-from-the-2025-cra-taulbee-survey/) | May 2026 |
+| New CS majors (prior cycle) | +12.7%, fourth straight year of growth | [CRA Taulbee Survey 2024](https://cra.org/crn/2025/06/cra-update-new-cra-taulbee-survey-findings-show-record-doctoral-production-rising-enrollment-and-shifting-undergraduate-trends/) | Jun 2025 |
 
 ### Crypto prices & sentiment
 | Claim | Figure | Source | As of |
@@ -51,16 +51,16 @@ our standard, we dropped it. We say so explicitly below.
 | Bitcoin price vs ATH | ~$65,853, ~47% below ~$126,000 ATH (Oct 2025) | news.bitcoin.com, CoinDesk, Fortune | Jun 3, 2026 |
 | Ethereum price vs ATH | ~$1,922, ~61% below $4,953.73 ATH (Aug 2025) | Yahoo Finance, TradingView, CoinCodex | Jun 2, 2026 |
 | Crypto Fear & Greed Index | 11 ("Extreme Fear"), down from 40 a month earlier | [alternative.me](https://alternative.me/crypto/fear-and-greed-index/) | Jun 3, 2026 |
-| Median crypto token | −79% from late-2024 peak | [Pantera Capital Blockchain Letter](https://panteracapital.com/) | Jan 2026 |
+| Median crypto token | −79% from late-2024 peak | [Pantera Capital Blockchain Letter](https://panteracapital.com/blockchain-letter/navigating-crypto-in-2026/) | Jan 2026 |
 | Altcoin mkt cap (ex BTC/ETH/stables) | −44% from late-2024 peak | Pantera Capital Blockchain Letter | Jan 2026 |
 
 ### Crypto institutional adoption & funding
 | Claim | Figure | Source | As of |
 |-------|--------|--------|-------|
-| Stablecoin market cap | $317B all-time high | [CoinDesk Research](https://www.coindesk.com/research/) | Mar 2026 |
+| Stablecoin market cap | $317B all-time high | [CoinDesk Research](https://www.coindesk.com/research/stablecoins-and-tokenized-asset-report-january-2026) | Mar 2026 |
 | Tokenized U.S. Treasuries | ~$14.7B | [rwa.xyz](https://app.rwa.xyz/treasuries) | Jun 4, 2026 |
-| Tokenized real-world assets (all) | crossed $30B, ~$34B | a16z crypto; rwa.xyz | early 2026 |
-| Crypto VC, 2021–22 peak | ~$30B per year | [Galaxy Research](https://www.galaxy.com/research) | FY 2022 |
+| Tokenized real-world assets (all) | crossed $30B, ~$34B | [a16z crypto](https://a16zcrypto.com/posts/article/trends-stablecoins-rwa-tokenization-payments-finance/); rwa.xyz | early 2026 |
+| Crypto VC, 2021–22 peak | ~$30B per year | [Galaxy Research](https://www.galaxy.com/insights/research/crypto-blockchain-vc-venture-capital-startups-fundraising-q1-2026) | FY 2022 |
 | Crypto VC, 2024 | ~$11.5B | Galaxy Research | FY 2024 |
 | Crypto VC, 2025 | ~$20B | Galaxy Research | FY 2025 |
 | Crypto VC, 2026 | ~$4B in Q1 (~$16B annualized) | Galaxy Research | Q1 2026 |
@@ -79,7 +79,7 @@ Source: [web3.career/web3-salaries](https://web3.career/web3-salaries), page dat
 ### Developers & AI-generated code
 | Claim | Figure | Source | As of |
 |-------|--------|--------|-------|
-| Monthly active crypto devs | ~23,613 (statistically insignificant −7% YoY) | [Electric Capital 2024 Developer Report](https://www.developerreport.com/) | Nov 2024 |
+| Monthly active crypto devs | ~23,613 (statistically insignificant −7% YoY) | [Electric Capital 2024 Developer Report](https://www.developerreport.com/reports/devs/2024) | Nov 2024 |
 | Experienced (2+ yr) devs | +27% YoY, write ~70% of commits | Electric Capital 2024 Developer Report | Nov 2024 |
 | Google new code that is AI-generated | >25% | Sundar Pichai, Alphabet Q3 2024 earnings call | Oct 2024 |
 | GitHub Copilot users | 20 million all-time | Satya Nadella, Microsoft Q4 FY2025 earnings call | Jul 2025 |
