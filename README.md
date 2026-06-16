@@ -39,6 +39,7 @@ our standard, we dropped it. We say so explicitly below.
 | Claim | Figure | Source | As of |
 |-------|--------|--------|-------|
 | Tech layoffs, 2024 | 152,922 across 551 companies | [layoffs.fyi](https://layoffs.fyi/) (crowd-aggregated tracker) | early Jun 2026 |
+| Tech layoffs, 2025 | ~123,000 (~20% below 2024, lowest since 2022; company count varies 257-269 by source) | [layoffs.fyi](https://layoffs.fyi/) | full-year 2025 |
 | Tech layoffs, 2026 (partial) | 165,269 across 1,064 companies | [layoffs.fyi](https://layoffs.fyi/) | early Jun 2026 |
 | Young (22-25) AI-exposed workers | ~16% relative employment decline | [Stanford Digital Economy Lab, "Canaries in the Coal Mine?"](https://digitaleconomy.stanford.edu/app/uploads/2025/11/CanariesintheCoalMine_Nov25.pdf) | Nov 2025 |
 | Young software developers | ~20% below late-2022 peak (descriptive) | [Stanford, "Canaries in the Coal Mine?"](https://digitaleconomy.stanford.edu/app/uploads/2025/11/CanariesintheCoalMine_Nov25.pdf) | Nov 2025 |

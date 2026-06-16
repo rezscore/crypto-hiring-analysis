@@ -33,26 +33,25 @@ _LOGO_PATH = (
 )
 
 
-def add_watermark(ax, alpha=0.45, zoom=0.32, loc=(0.99, 0.97)):
-    """Place a small, faint RezScore logo in a corner of `ax`.
+def add_watermark(fig, alpha=0.45, zoom=0.34, loc=(0.995, 0.995)):
+    """Place a small, faint RezScore logo in the top-right of the whole figure.
 
-    Uses an AnnotationBbox in axes-fraction coords so it survives tight_layout
-    and bbox_inches='tight' (unlike figimage, which gets recropped). `loc` is the
-    (x, y) anchor in axes fraction; default top-right where chart whitespace lives.
-    Silently no-ops if the logo file is missing so generation never hard-fails.
+    Anchored in figure-fraction coords (not a single panel) so it reads as the
+    image's watermark rather than floating inside the left chart. Uses an
+    AnnotationBbox attached to the figure, which survives tight_layout and
+    bbox_inches='tight'. No-ops if the logo file is missing.
     """
     if not _LOGO_PATH.exists():
         print(f"  (watermark skipped - logo not found at {_LOGO_PATH})")
         return
     logo = mpimg.imread(str(_LOGO_PATH))
     imagebox = OffsetImage(logo, zoom=zoom, alpha=alpha)
-    imagebox.image.axes = ax
     ab = AnnotationBbox(
-        imagebox, loc, xycoords='axes fraction',
+        imagebox, loc, xycoords='figure fraction',
         box_alignment=(1, 1),  # anchor the logo's top-right corner at loc
         frameon=False, pad=0, zorder=20,
     )
-    ax.add_artist(ab)
+    fig.add_artist(ab)
 
 # Set style (matches generate_blog_charts.py)
 plt.style.use('seaborn-v0_8-whitegrid')
@@ -74,24 +73,30 @@ def chart_1_labor_bear_market():
     """The tech labor downturn, concentrated at the entry level.
 
     Sources:
-    - layoffs.fyi (as of early June 2026): 152,922 cuts 2024; 165,269 partial 2026.
+    - layoffs.fyi (as of early June 2026): 152,922 cuts 2024; ~123,000 in 2025
+      (~20% below 2024, "lowest since 2022"); 165,269 partial 2026.
     - Stanford Digital Economy Lab, "Canaries in the Coal Mine?" (Nov 2025):
       young (22-25) AI-exposed workers ~-16% relative; young software devs ~-20%
       from late-2022 peak (descriptive, not clean AI causation).
     """
+    from matplotlib.ticker import FuncFormatter
+
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(13, 6))
 
     # --- Left panel: layoffs by year ---
-    years = ['2024', '2026\n(partial,\nthru early Jun)']
-    layoffs = [152922, 165269]  # layoffs.fyi
-    bars = ax1.bar(years, layoffs, color=[GRAY, DANGER_RED], width=0.55)
-    for bar, val in zip(bars, layoffs):
-        ax1.text(bar.get_x() + bar.get_width() / 2, val + 3000, f'{val:,}',
-                 ha='center', fontsize=13, fontweight='bold')
+    years = ['2024', '2025', '2026\n(through June)']
+    layoffs = [152922, 123000, 165269]  # layoffs.fyi; 2025 ~123K (sources vary 257-269 cos)
+    is_approx = [False, True, False]
+    bars = ax1.bar(years, layoffs, color=[GRAY, GRAY, DANGER_RED], width=0.62)
+    for bar, val, approx in zip(bars, layoffs, is_approx):
+        label = f'~{val:,}' if approx else f'{val:,}'
+        ax1.text(bar.get_x() + bar.get_width() / 2, val + 3000, label,
+                 ha='center', fontsize=12, fontweight='bold')
     ax1.set_ylabel('Tech employees laid off', fontsize=12)
     ax1.set_ylim(0, 195000)
+    ax1.yaxis.set_major_formatter(FuncFormatter(lambda v, _: f'{int(v):,}'))
     ax1.set_title('The layoffs never stopped', fontsize=15, fontweight='bold', pad=15)
-    ax1.text(0.5, -0.16, 'Source: layoffs.fyi tracker (crowd-aggregated), as of early June 2026',
+    ax1.text(0.5, -0.14, 'Source: layoffs.fyi (2025 approx.; sources vary)',
              ha='center', fontsize=9, color=GRAY, style='italic', transform=ax1.transAxes)
     ax1.spines['top'].set_visible(False)
     ax1.spines['right'].set_visible(False)
@@ -117,16 +122,14 @@ def chart_1_labor_bear_market():
     ax2.set_xlim(-28, 13)
     ax2.set_xlabel('Employment change', fontsize=12)
     ax2.set_title('The bottom rung broke first', fontsize=15, fontweight='bold', pad=15)
-    ax2.text(0.5, -0.16,
-             'Source: Stanford Digital Economy Lab, "Canaries in the Coal Mine?" (Nov 2025).\n'
-             'Young-dev figure is descriptive, not a clean measure of AI causation.',
+    ax2.text(0.5, -0.14, 'Source: Stanford Digital Economy Lab (Nov 2025)',
              ha='center', fontsize=9, color=GRAY, style='italic', transform=ax2.transAxes)
     ax2.spines['top'].set_visible(False)
     ax2.spines['right'].set_visible(False)
 
     fig.suptitle('Bear Market #1: Tech Labor', fontsize=19, fontweight='bold', y=1.02)
     plt.tight_layout()
-    add_watermark(ax1)  # left panel has open space at top-right
+    add_watermark(fig)  # top-right of the whole image
     plt.savefig(OUTPUT_DIR / 'c1_labor_bear_market.png', dpi=150, bbox_inches='tight',
                 facecolor='white', edgecolor='none')
     plt.close()
@@ -175,7 +178,7 @@ def chart_2_crypto_drawdown():
     ax.spines['right'].set_visible(False)
 
     plt.tight_layout()
-    add_watermark(ax)  # bars hang down from 0; top-right corner is clear
+    add_watermark(fig)  # top-right of the whole image
     plt.savefig(OUTPUT_DIR / 'c2_crypto_drawdown.png', dpi=150, bbox_inches='tight',
                 facecolor='white', edgecolor='none')
     plt.close()
@@ -227,7 +230,7 @@ def chart_3_crypto_split_screen():
 
     fig.suptitle('The Twist: The Money Never Left', fontsize=19, fontweight='bold', y=1.02)
     plt.tight_layout()
-    add_watermark(ax1)  # left panel: tall first bar, but right side is open
+    add_watermark(fig)  # top-right of the whole image
     plt.savefig(OUTPUT_DIR / 'c3_crypto_split_screen.png', dpi=150, bbox_inches='tight',
                 facecolor='white', edgecolor='none')
     plt.close()
@@ -295,7 +298,7 @@ def chart_4_code_vs_coders():
     fig.suptitle('More Code, Fewer Coders (the facts; the conclusion is the argument)',
                  fontsize=17, fontweight='bold', y=1.00)
     plt.tight_layout(rect=[0, 0.06, 1, 1])
-    add_watermark(ax1, loc=(0.99, 0.99))  # left panel top-right is open whitespace
+    add_watermark(fig)  # top-right of the whole image
     plt.savefig(OUTPUT_DIR / 'c4_code_vs_coders.png', dpi=150, bbox_inches='tight',
                 facecolor='white', edgecolor='none')
     plt.close()
