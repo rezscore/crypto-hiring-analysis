@@ -167,11 +167,8 @@ def chart_2_crypto_drawdown():
     ax.set_title('Bear Market #2: Crypto Prices Are Deep Below Their Highs',
                  fontsize=17, fontweight='bold', pad=20)
 
-    # Fear & Greed callout
-    ax.text(0.5, -0.155,
-            'BTC/ETH: prices vs all-time highs, June 12, 2026 (Yahoo Finance). '
-            'Altcoin figures: Pantera Capital (Jan 2026), peak-to-trough from late-2024 peak.\n'
-            'Crypto Fear & Greed Index hit 12 ("Extreme Fear"), its lowest of 2026, on June 13, 2026 (alternative.me).',
+    ax.text(0.5, -0.13,
+            'Sources: Yahoo Finance (BTC/ETH, Jun 2026); Pantera Capital (altcoins, Jan 2026)',
             ha='center', fontsize=9, color=GRAY, style='italic', transform=ax.transAxes)
 
     ax.spines['top'].set_visible(False)
@@ -263,11 +260,9 @@ def chart_4_code_vs_coders():
              bbox=dict(boxstyle='round', facecolor='white', edgecolor=LIGHT_GRAY, pad=0.6))
     ax1.set_xticks([0])
     ax1.set_xticklabels(['Google: AI-generated\nshare of NEW code'])
-    ax1.text(0.5, -0.24,
-             'Sources: Sundar Pichai, Alphabet Q3 2024 earnings (Oct 2024)\n'
-             '— new code, reviewed by engineers. Copilot users:\n'
-             'Microsoft (Jul 2025), cumulative all-time, not active.',
-             ha='center', va='top', fontsize=8.5, color=GRAY, style='italic',
+    ax1.text(0.5, -0.20,
+             'Source: Sundar Pichai, Alphabet Q3 2024 earnings (Oct 2024)',
+             ha='center', va='top', fontsize=9, color=GRAY, style='italic',
              transform=ax1.transAxes)
     ax1.spines['top'].set_visible(False)
     ax1.spines['right'].set_visible(False)
@@ -287,17 +282,16 @@ def chart_4_code_vs_coders():
     ax2.set_ylim(-20, 84)
     ax2.set_ylabel('Percent', fontsize=12)
     ax2.set_title('"Fewer coders": base flat, consolidating', fontsize=14, fontweight='bold', pad=15)
-    ax2.text(0.5, -0.24,
-             'Source: Electric Capital 2024 Developer Report (as of Nov 2024).\n'
-             'The -7% is described as a statistically insignificant change — "basically flat."',
-             ha='center', va='top', fontsize=8.5, color=GRAY, style='italic',
+    ax2.text(0.5, -0.20,
+             'Source: Electric Capital 2024 Developer Report (Nov 2024)',
+             ha='center', va='top', fontsize=9, color=GRAY, style='italic',
              transform=ax2.transAxes)
     ax2.spines['top'].set_visible(False)
     ax2.spines['right'].set_visible(False)
 
     fig.suptitle('More Code, Fewer Coders (the facts; the conclusion is the argument)',
                  fontsize=17, fontweight='bold', y=1.00)
-    plt.tight_layout(rect=[0, 0.06, 1, 1])
+    plt.tight_layout(rect=[0, 0.03, 1, 1])
     add_watermark(fig)  # top-right of the whole image
     plt.savefig(OUTPUT_DIR / 'c4_code_vs_coders.png', dpi=150, bbox_inches='tight',
                 facecolor='white', edgecolor='none')
