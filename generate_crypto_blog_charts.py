@@ -17,12 +17,42 @@ Output:
 """
 
 import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
 import numpy as np
+from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 from pathlib import Path
 
 # Create output directory (shared with generate_blog_charts.py)
 OUTPUT_DIR = Path(__file__).parent / "charts"
 OUTPUT_DIR.mkdir(exist_ok=True)
+
+# RezScore logo, used as a corner watermark on every chart.
+_LOGO_PATH = (
+    Path(__file__).parent.parent
+    / "rezscore_ai" / "static" / "img" / "logo.png"
+)
+
+
+def add_watermark(ax, alpha=0.45, zoom=0.32, loc=(0.99, 0.97)):
+    """Place a small, faint RezScore logo in a corner of `ax`.
+
+    Uses an AnnotationBbox in axes-fraction coords so it survives tight_layout
+    and bbox_inches='tight' (unlike figimage, which gets recropped). `loc` is the
+    (x, y) anchor in axes fraction; default top-right where chart whitespace lives.
+    Silently no-ops if the logo file is missing so generation never hard-fails.
+    """
+    if not _LOGO_PATH.exists():
+        print(f"  (watermark skipped - logo not found at {_LOGO_PATH})")
+        return
+    logo = mpimg.imread(str(_LOGO_PATH))
+    imagebox = OffsetImage(logo, zoom=zoom, alpha=alpha)
+    imagebox.image.axes = ax
+    ab = AnnotationBbox(
+        imagebox, loc, xycoords='axes fraction',
+        box_alignment=(1, 1),  # anchor the logo's top-right corner at loc
+        frameon=False, pad=0, zorder=20,
+    )
+    ax.add_artist(ab)
 
 # Set style (matches generate_blog_charts.py)
 plt.style.use('seaborn-v0_8-whitegrid')
@@ -74,13 +104,17 @@ def chart_1_labor_bear_market():
     colors = [DANGER_RED if c < 0 else SUCCESS_GREEN for c in changes]
     bars2 = ax2.barh(cohorts, changes, color=colors, height=0.6)
     for bar, val in zip(bars2, changes):
-        offset = -1.5 if val < 0 else 0.5
+        # Place each label just past the bar's tip; a white bbox keeps it legible
+        # over the gridlines instead of colliding with them.
+        offset = -1.0 if val < 0 else 1.0
         ha = 'right' if val < 0 else 'left'
         ax2.text(val + offset, bar.get_y() + bar.get_height() / 2,
                  f'{"+" if val > 0 else ""}{val}%', va='center', ha=ha,
-                 fontsize=13, fontweight='bold')
+                 fontsize=13, fontweight='bold',
+                 bbox=dict(boxstyle='round,pad=0.15', facecolor='white',
+                           edgecolor='none', alpha=0.85))
     ax2.axvline(x=0, color=GRAY, linewidth=1)
-    ax2.set_xlim(-26, 12)
+    ax2.set_xlim(-28, 13)
     ax2.set_xlabel('Employment change', fontsize=12)
     ax2.set_title('The bottom rung broke first', fontsize=15, fontweight='bold', pad=15)
     ax2.text(0.5, -0.16,
@@ -92,6 +126,7 @@ def chart_1_labor_bear_market():
 
     fig.suptitle('Bear Market #1: Tech Labor', fontsize=19, fontweight='bold', y=1.02)
     plt.tight_layout()
+    add_watermark(ax1)  # left panel has open space at top-right
     plt.savefig(OUTPUT_DIR / 'c1_labor_bear_market.png', dpi=150, bbox_inches='tight',
                 facecolor='white', edgecolor='none')
     plt.close()
@@ -118,8 +153,10 @@ def chart_2_crypto_drawdown():
 
     bars = ax.bar(labels, drawdowns, color=colors, width=0.6)
     for bar, val in zip(bars, drawdowns):
-        ax.text(bar.get_x() + bar.get_width() / 2, val - 3, f'{val}%',
-                ha='center', va='top', fontsize=15, fontweight='bold', color='white')
+        # Dark label just below each bar's tip - reads clearly on the white
+        # background instead of disappearing as white-on-bar.
+        ax.text(bar.get_x() + bar.get_width() / 2, val - 2.5, f'{val}%',
+                ha='center', va='top', fontsize=15, fontweight='bold', color='#1f2937')
 
     ax.axhline(y=0, color=GRAY, linewidth=1)
     ax.set_ylim(-90, 8)
@@ -138,6 +175,7 @@ def chart_2_crypto_drawdown():
     ax.spines['right'].set_visible(False)
 
     plt.tight_layout()
+    add_watermark(ax)  # bars hang down from 0; top-right corner is clear
     plt.savefig(OUTPUT_DIR / 'c2_crypto_drawdown.png', dpi=150, bbox_inches='tight',
                 facecolor='white', edgecolor='none')
     plt.close()
@@ -189,6 +227,7 @@ def chart_3_crypto_split_screen():
 
     fig.suptitle('The Twist: The Money Never Left', fontsize=19, fontweight='bold', y=1.02)
     plt.tight_layout()
+    add_watermark(ax1)  # left panel: tall first bar, but right side is open
     plt.savefig(OUTPUT_DIR / 'c3_crypto_split_screen.png', dpi=150, bbox_inches='tight',
                 facecolor='white', edgecolor='none')
     plt.close()
@@ -256,6 +295,7 @@ def chart_4_code_vs_coders():
     fig.suptitle('More Code, Fewer Coders (the facts; the conclusion is the argument)',
                  fontsize=17, fontweight='bold', y=1.00)
     plt.tight_layout(rect=[0, 0.06, 1, 1])
+    add_watermark(ax1, loc=(0.99, 0.99))  # left panel top-right is open whitespace
     plt.savefig(OUTPUT_DIR / 'c4_code_vs_coders.png', dpi=150, bbox_inches='tight',
                 facecolor='white', edgecolor='none')
     plt.close()
